@@ -5,7 +5,6 @@ class Job extends Component {
   }
   render() {
     const job = this.props.info;
-    // console.log(job);
     return (
       <div className='job-card'>
         <h3>
