@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Job from './components/Job';
-import LoadMoreButton from './components/LoadMoreButton';
+//import LoadMoreButton from './components/LoadMoreButton';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,6 @@ class App extends Component {
         {jobsList.map((job, i) => (
           <Job info={job} key={`job-${i}`} />
         ))}
-        <LoadMoreButton />
       </div>
     );
   }
