@@ -1,4 +1,3 @@
-const { json } = require('express');
 const fetch = require('node-fetch');
 const db = require('../models/jobsModels');
 const apiURL = `https://jobs.github.com/positions.json?page=`;
