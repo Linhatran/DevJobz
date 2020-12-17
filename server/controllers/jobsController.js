@@ -93,7 +93,7 @@ WHERE id=$1;`;
 
 jobsController.deleteJob = (req, res, next) => {
   const { id } = req.params;
-  const queryString = `DELETE FROM jobs WHERE job_id=$1;`;
+  const queryString = `DELETE FROM jobs WHERE id=$1;`;
   const queryParams = [id];
   db.query(queryString, queryParams)
     .then((response) => {

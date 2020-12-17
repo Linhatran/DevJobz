@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 function JobsDisplay(props) {
   return (
-    <div className='container d-flex flex-wrap justify-content-center"'>
+    <div className='container d-flex flex-wrap justify-content-center pl-5'>
       {props.jobsList.map((job, i) => (
         <Job
           job={job}

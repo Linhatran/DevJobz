@@ -20,6 +20,10 @@ function FullPosting(props) {
       <Link to={'/'}> &#8592; Go back to dashboard</Link>
       <br />
       <Link to={'/user/edit'}>Edit a job posting &#8594;</Link>
+      <br />
+      <Link to={'/user/delete'} className='text-danger'>
+        &#8593; Delete this job posting
+      </Link>
     </div>
   );
 }

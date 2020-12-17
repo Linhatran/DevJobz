@@ -24,8 +24,6 @@ function User(props) {
         viewJobId={props.viewJobId}
         setViewedJob={props.setViewedJob}
       />
-
-      {/* <Link to={'/user/delete'}>Post a new job</Link> */}
     </div>
   );
 }

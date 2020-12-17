@@ -7,6 +7,7 @@ import Login from './components/Login';
 import User from './components/User';
 import CreateJob from './components/CreateJob';
 import EditJob from './components/EditJob';
+import DeleteJob from './components/DeleteJob';
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
@@ -68,6 +69,13 @@ function App() {
           path='/user/edit'
           render={() => (
             <EditJob setViewedJob={setViewedJob} viewedJob={viewedJob} />
+          )}
+        />
+        <Route
+          exact
+          path='/user/delete'
+          render={() => (
+            <DeleteJob setViewedJob={setViewedJob} viewedJob={viewedJob} />
           )}
         />
       </Switch>
