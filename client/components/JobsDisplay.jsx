@@ -10,7 +10,8 @@ function JobsDisplay(props) {
           key={i}
           jobId={job.id}
           setViewedJobId={props.setViewedJobId}
-          setJob={props.setJob}
+          viewedJobId={props.viewedJobId}
+          setViewedJob={props.setViewedJob}
         />
       ))}
     </div>

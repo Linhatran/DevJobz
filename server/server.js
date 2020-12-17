@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 //handle GET request to /api/
-
+//get ALL jobs
 app.get(
   '/api/',
   jobsController.getApiJobs,
@@ -24,17 +24,25 @@ app.get(
     return res.status(200).json(jobs);
   }
 );
-
+//get only jobs from DB
+app.get('/api/db', jobsController.getDbJobs, (req, res) => {
+  const jobs = res.locals.jobs;
+  return res.status(200).json(jobs);
+});
+//query jobs with params
 app.post('/api/jobs', jobsController.queryJobs, (req, res) => {
   const { jobs } = res.locals;
   res.status(200).json(jobs);
 });
+//post a job
 app.post('/api/post', jobsController.postJob, (req, res) => {
   res.send('Posted job');
 });
+//delete a job
 app.delete('/api/delete/:id', jobsController.deleteJob, (req, res) => {
   res.send('Deleted job');
 });
+//edit a job
 app.put('/api/edit/:id', jobsController.editJob, (req, res) => {
   res.send('Updated job');
 });
@@ -43,7 +51,6 @@ app.put('/api/edit/:id', jobsController.editJob, (req, res) => {
 
 app.post('/api/login', usersController.verifyUser, (req, res) => {
   const { result } = res.locals;
-  console.log('result', result);
   res.status(200).json(result);
 });
 //run this for production

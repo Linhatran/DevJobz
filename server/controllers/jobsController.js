@@ -34,8 +34,13 @@ jobsController.getApiJobs = (req, res, next) => {
 jobsController.getDbJobs = (req, res, next) => {
   db.query('SELECT * FROM "jobs";')
     .then((response) => {
-      res.locals.jobs = res.locals.jobs.concat(response.rows);
-      return next();
+      if (!res.locals.jobs) {
+        res.locals.jobs = response.rows;
+        return next();
+      } else {
+        res.locals.jobs = res.locals.jobs.concat(response.rows);
+        return next();
+      }
     })
     .catch((err) => console.log('Error executing query ', err.stack));
 };
@@ -55,6 +60,7 @@ jobsController.postJob = (req, res, next) => {
 
   const queryString = `INSERT INTO jobs (type, created_at, company, company_url, location, title, description, how_to_apply, company_logo)
                 VALUES ('${type}', '${created_at}', '${company}', '${company_url}', '${location}', '${title}', '${description}', '${how_to_apply}', '${company_logo}' );`;
+
   db.query(queryString)
     .then((res) => {
       return next();
@@ -76,7 +82,7 @@ jobsController.editJob = (req, res, next) => {
     company_logo,
   } = req.body;
   const queryString = `UPDATE jobs SET type = '${type}', created_at = '${created_at}', company = '${company}', company_url = '${company_url}', location = '${location}', title = '${title}', description = '${description}', how_to_apply = '${how_to_apply}', company_logo = '${company_logo}'  
-WHERE job_id=$1;`;
+WHERE id=$1;`;
   const queryParams = [id];
   db.query(queryString, queryParams)
     .then((response) => {

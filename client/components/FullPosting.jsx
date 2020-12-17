@@ -17,7 +17,9 @@ function FullPosting(props) {
       <p>Posted on: {job.created_at}</p>
       <p dangerouslySetInnerHTML={{ __html: job.description }}></p>
       <p dangerouslySetInnerHTML={{ __html: job.how_to_apply }}></p>
-      <Link to={'/'}> &#8592; Go back</Link>
+      <Link to={'/'}> &#8592; Go back to dashboard</Link>
+      <br />
+      <Link to={'/user/edit'}>Edit a job posting &#8594;</Link>
     </div>
   );
 }

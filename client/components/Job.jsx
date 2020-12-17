@@ -6,8 +6,9 @@ function Job(props) {
   return (
     <div
       className='job-card col-md-3 mt-5 mr-5'
-      onClick={() => {
-        return props.setViewedJobId(props.jobId);
+      onClick={(e) => {
+        props.setViewedJobId(props.jobId);
+        props.setViewedJob(props.job);
       }}
     >
       <Link to={`/job/${id}`}>

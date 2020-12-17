@@ -4,8 +4,10 @@
 #search-form {
   width: 60vw;
 }
-
 .job-card {
   background-color: bisque;
   border-radius: 10px;
+}
+#login-form {
+  margin-top: 200px;
 }
