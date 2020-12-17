@@ -40,7 +40,6 @@ jobsController.getDbJobs = (req, res, next) => {
     })
     .catch((err) => console.log('Error executing query ', err.stack));
 };
-module.exports = jobsController;
 
 jobsController.postJob = (req, res, next) => {
   const {
@@ -97,3 +96,18 @@ jobsController.deleteJob = (req, res, next) => {
     })
     .catch((err) => console.log('Error executing query ', err.stack));
 };
+jobsController.viewJob = (req, res, next) => {
+  const { id } = req.params;
+  console.log(res.locals.jobs.length);
+  const queryString = `SELECT * FROM jobs WHERE id = $1;`;
+  const queryParams = [id];
+
+  db.query(queryString, queryParams)
+    .then((response) => {
+      res.locals.viewedJob = response.rows[0];
+
+      return next();
+    })
+    .catch((err) => console.log('Error executing query ', err.stack));
+};
+module.exports = jobsController;

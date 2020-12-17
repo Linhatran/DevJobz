@@ -1,0 +1,10 @@
+.container {
+  width: 960px;
+}
+#search-form {
+  width: 60vw;
+}
+
+.job-card {
+  background-color: bisque;
+}

@@ -22,13 +22,22 @@ app.get(
     return res.status(200).json(jobs);
   }
 );
-app.post('/api/', jobsController.postJob, (req, res) => {
+// app.get(
+//   '/api/:id',
+//   jobsController.getApiJobs,
+//   jobsController.viewJob,
+//   (req, res) => {
+//     const job = res.locals.viewedJob;
+//     res.status(200).json(job);
+//   }
+// );
+app.post('/api/post', jobsController.postJob, (req, res) => {
   res.send('Posted job');
 });
-app.delete('/api/:id', jobsController.deleteJob, (req, res) => {
+app.delete('/api/delete/:id', jobsController.deleteJob, (req, res) => {
   res.send('Deleted job');
 });
-app.put('/api/:id', jobsController.editJob, (req, res) => {
+app.put('/api/edit/:id', jobsController.editJob, (req, res) => {
   res.send('Updated job');
 });
 //run this for production

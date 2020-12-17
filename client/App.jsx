@@ -1,25 +1,43 @@
 import React, { Component, useState, useEffect } from 'react';
-import Job from './components/Job';
-import { Button } from 'react-bootstrap';
+import { Route, Switch } from 'react-router-dom';
+import JobsDisplay from './components/JobsDisplay';
+import Navbar from './components/Navbar';
+import FullPosting from './components/FullPosting';
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
+  const [viewedJobId, setViewedJobId] = useState(null);
+
   useEffect(() => {
     fetch('/api/')
       .then((res) => res.json())
       .then(
         (data) => {
           setJobsList(data);
+          sessionStorage.setItem('jobsList', JSON.stringify(data));
         },
         (err) => console.log('ERRORRR ', err)
       );
   }, []);
+
   return (
     <div>
-      <Button className='btn-primary'>Search</Button>
-      {jobsList.map((job, i) => (
-        <Job info={job} key={`job-${i}`} />
-      ))}
+      <Navbar />
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={() => (
+            <JobsDisplay jobsList={jobsList} setViewedJobId={setViewedJobId} />
+          )}
+        />
+        ;
+        <Route
+          exact
+          path='/job/:id'
+          render={() => <FullPosting viewedJobId={viewedJobId} />}
+        />
+      </Switch>
     </div>
   );
 }
