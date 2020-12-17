@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
-import SearchButton from './SearchButton';
+import axios from 'axios';
 function SearchForm() {
-  const [jobInput, setJobInput] = useState('');
-  const [locationInput, setLocationInput] = useState('');
-  const [checkboxInput, setCheckboxInput] = useState(true);
+  const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
+  const [full_time, setFull_Time] = useState(true);
+  function handleSubmit(e) {
+    e.preventDefault();
+    axios
+      .post('/api/jobs', {
+        description,
+        location,
+        full_time,
+      })
+      .then((result) => console.log('posted'))
+      .catch((err) => console.log(err));
+  }
   return (
-    <form className='d-flex my-2' id='search-form'>
+    <form className='d-flex my-2' id='search-form' onSubmit={handleSubmit}>
       <input
         className='form-control mr-3 col-4'
         type='search'
         placeholder='Search for jobs...'
         aria-label='Search'
         id='job-field'
-        onKeyUp={(e) => setJobInput(e.target.value)}
+        onKeyUp={(e) => setDescription(e.target.value)}
       />
       <input
         className='form-control mr-3 col-4'
@@ -20,7 +31,7 @@ function SearchForm() {
         placeholder='Search for job location...'
         aria-label='Search'
         id='location-field'
-        onKeyUp={(e) => setLocationInput(e.target.value)}
+        onKeyUp={(e) => setLocation(e.target.value)}
       />
       <div className='form-check mr-3 align-self-center'>
         <input
@@ -29,18 +40,19 @@ function SearchForm() {
           value=''
           id='checkbox'
           onChange={() =>
-            checkboxInput ? setCheckboxInput(false) : setCheckboxInput(true)
+            full_time ? setFull_Time(false) : setFull_Time(true)
           }
         />
-        <label class='form-check-label text-white' for='flexCheckChecked'>
+        <label
+          className='form-check-label text-white'
+          htmlFor='flexCheckChecked'
+        >
           Full-time
         </label>
       </div>
-      <SearchButton
-        description={jobInput}
-        location={locationInput}
-        full_time={!checkboxInput}
-      />
+      <button className='btn btn-info' type='submit'>
+        Search
+      </button>
     </form>
   );
 }

@@ -22,15 +22,16 @@ app.get(
     return res.status(200).json(jobs);
   }
 );
-// app.get(
-//   '/api/:id',
-//   jobsController.getApiJobs,
-//   jobsController.viewJob,
-//   (req, res) => {
-//     const job = res.locals.viewedJob;
-//     res.status(200).json(job);
-//   }
-// );
+app.post(
+  '/api/jobs',
+  // jobsController.getApiJobs,
+  // jobsController.viewJob,
+  (req, res) => {
+    console.log('req body', req.body);
+    // const job = res.locals.viewedJob;
+    res.send('searching for jobs');
+  }
+);
 app.post('/api/post', jobsController.postJob, (req, res) => {
   res.send('Posted job');
 });

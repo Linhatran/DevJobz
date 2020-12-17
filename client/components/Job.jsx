@@ -11,7 +11,7 @@ function Job(props) {
       }}
     >
       <Link to={`/job/${id}`}>
-        <h5>
+        <h5 className='mt-3'>
           {props.job.title} - {props.job.type}
         </h5>
       </Link>
