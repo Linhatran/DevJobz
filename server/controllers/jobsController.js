@@ -32,7 +32,6 @@ jobsController.getApiJobs = (req, res, next) => {
 };
 
 jobsController.getDbJobs = (req, res, next) => {
-  console.log('in getdb');
   db.query('SELECT * FROM "jobs";')
     .then((response) => {
       res.locals.jobs = res.locals.jobs.concat(response.rows);

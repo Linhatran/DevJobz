@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import JobsDisplay from './components/JobsDisplay';
 import Navbar from './components/Navbar';
 import FullPosting from './components/FullPosting';
-
+import Login from './components/Login';
 function App() {
   const [jobsList, setJobsList] = useState([]);
   const [viewedJobId, setViewedJobId] = useState(null);
@@ -37,6 +37,7 @@ function App() {
           path='/job/:id'
           render={() => <FullPosting viewedJobId={viewedJobId} />}
         />
+        <Route exact path='/login' render={() => <Login />} />
       </Switch>
     </div>
   );

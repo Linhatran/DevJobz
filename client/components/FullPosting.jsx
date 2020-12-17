@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 function FullPosting(props) {
   const id = props.viewedJobId;
   const jobsList = JSON.parse(sessionStorage.getItem('jobsList'));
@@ -8,7 +8,7 @@ function FullPosting(props) {
   return (
     <div className='container my-5'>
       <img src={job.company_logo} alt='logo' style={{ width: '200px' }} />
-      <h3>
+      <h3 className='mt-5'>
         {job.title} - {job.type}
       </h3>
       <h5>Company: {job.company}</h5>
@@ -17,6 +17,7 @@ function FullPosting(props) {
       <p>Posted on: {job.created_at}</p>
       <p dangerouslySetInnerHTML={{ __html: job.description }}></p>
       <p dangerouslySetInnerHTML={{ __html: job.how_to_apply }}></p>
+      <Link to={'/'}> &#8592; Go back</Link>
     </div>
   );
 }

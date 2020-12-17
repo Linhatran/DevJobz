@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const jobsController = require('./controllers/jobsController');
+const usersController = require('./controllers/usersController');
+
 //parse request body later
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,6 +37,14 @@ app.delete('/api/delete/:id', jobsController.deleteJob, (req, res) => {
 });
 app.put('/api/edit/:id', jobsController.editJob, (req, res) => {
   res.send('Updated job');
+});
+
+// handle users
+
+app.post('/api/login', usersController.verifyUser, (req, res) => {
+  const { result } = res.locals;
+  console.log('result', result);
+  res.status(200).json(result);
 });
 //run this for production
 app.use('/build', express.static(path.join(__dirname, '../build')));

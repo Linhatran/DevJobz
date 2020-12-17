@@ -1,14 +1,20 @@
 import React from 'react';
 import SearchForm from './SearchForm';
+import { Link } from 'react-router-dom';
 function Navbar(props) {
   return (
     <nav className='navbar navbar-dark bg-dark'>
       <div className='container-fluid '>
-        <a href='' className='nav-bar-brand text-white'>
+        <Link
+          to={'/'}
+          className='nav-bar-brand text-white text-decoration-none'
+        >
           JOBZ
-        </a>
+        </Link>
         <SearchForm setJobsList={props.setJobsList} />
-        <button className='btn btn-warning'>I'm an employer</button>
+        <Link to={`/login`}>
+          <button className='btn btn-warning'>I'm an employer</button>
+        </Link>
       </div>
     </nav>
   );
