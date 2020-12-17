@@ -1,13 +1,13 @@
 const fetch = require('node-fetch');
 const db = require('../models/jobsModels');
-const apiURL = `https://jobs.github.com/positions.json?page=`;
+const apiURL = `https://jobs.github.com/positions.json?`;
 
 const jobsController = {};
 
 jobsController.getApiJobs = (req, res, next) => {
   try {
     async function fetchData(url, page = 1, result = []) {
-      await fetch(url + page)
+      await fetch(`${url}page=${page}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.length !== 0) {
@@ -96,18 +96,32 @@ jobsController.deleteJob = (req, res, next) => {
     })
     .catch((err) => console.log('Error executing query ', err.stack));
 };
-jobsController.viewJob = (req, res, next) => {
-  const { id } = req.params;
-  console.log(res.locals.jobs.length);
-  const queryString = `SELECT * FROM jobs WHERE id = $1;`;
-  const queryParams = [id];
+jobsController.queryJobs = (req, res, next) => {
+  let queryString = [];
+  Object.keys(req.body).forEach((param) => {
+    if (req.body[param] !== '') {
+      let input = String(req.body[param]).toLowerCase().trim();
+      if (input.length > 1) {
+        input = input.split(' ').join('+');
+      }
+      queryString.push(`${param}=${input}`);
+    }
+  });
+  queryString = apiURL + queryString.join('&');
 
-  db.query(queryString, queryParams)
-    .then((response) => {
-      res.locals.viewedJob = response.rows[0];
-
+  fetch(queryString)
+    .then((response) => response.json())
+    .then((data) => {
+      res.locals.jobs = data;
       return next();
     })
-    .catch((err) => console.log('Error executing query ', err.stack));
+    .catch((err) => console.log(err));
+  // db.query(queryString, queryParams)
+  //   .then((response) => {
+  //     res.locals.viewedJob = response.rows[0];
+
+  //     return next();
+  //   })
+  //   .catch((err) => console.log('Error executing query ', err.stack));
 };
 module.exports = jobsController;

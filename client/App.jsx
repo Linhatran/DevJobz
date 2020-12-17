@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setJobsList={setJobsList} />
       <Switch>
         <Route
           exact

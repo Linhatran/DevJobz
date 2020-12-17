@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-function SearchForm() {
+function SearchForm(props) {
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [full_time, setFull_Time] = useState(true);
@@ -12,9 +12,10 @@ function SearchForm() {
         location,
         full_time,
       })
-      .then((result) => console.log('posted'))
+      .then((result) => props.setJobsList(result.data))
       .catch((err) => console.log(err));
   }
+
   return (
     <form className='d-flex my-2' id='search-form' onSubmit={handleSubmit}>
       <input

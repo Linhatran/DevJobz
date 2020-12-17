@@ -1,5 +1,6 @@
 import Job from './Job';
 import React from 'react';
+import { useState } from 'react';
 function JobsDisplay(props) {
   return (
     <div className='container d-flex flex-wrap justify-content-center"'>
