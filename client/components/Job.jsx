@@ -12,7 +12,7 @@ function Job(props) {
       }}
     >
       <Link to={`/job/${id}`}>
-        <h5 className='mt-3'>
+        <h5 className='mt-3' style={{ color: '#294B7A' }}>
           {props.job.title} - {props.job.type}
         </h5>
       </Link>

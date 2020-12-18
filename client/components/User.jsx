@@ -15,15 +15,16 @@ function User(props) {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
-      <h1>User homepage</h1>
-      <Link to={'/user/post'}>Post a new job</Link>
+    <div className='d-flex flex-column align-items-center '>
       <JobsDisplay
         jobsList={jobsList}
         setViewedJobId={props.setViewedJobId}
         viewJobId={props.viewJobId}
         setViewedJob={props.setViewedJob}
       />
+      <Link to={'/user/post'} className='my-5'>
+        <button className='btn btn-info'>Post a new job</button>
+      </Link>
     </div>
   );
 }

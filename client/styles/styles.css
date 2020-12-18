@@ -15,3 +15,8 @@ body {
 #login-form {
   margin-top: 200px;
 }
+#edit-form input,
+#create-job-form input {
+  margin-bottom: 30px;
+  width: 270px !important;
+}

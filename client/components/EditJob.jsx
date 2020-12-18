@@ -18,13 +18,14 @@ function EditJob(props) {
   };
 
   return (
-    <div>
-      <h2>Edit Job Posting</h2>
+    <div className='container'>
+      <h2 className='text-center pt-5'>Edit Job Posting</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className='pl-5' id='edit-form'>
         <label htmlFor='title' id='title'>
           Title:
         </label>
+        <br />
         <input
           type='text'
           name='title'
@@ -36,6 +37,7 @@ function EditJob(props) {
         <label htmlFor='type' id='type'>
           Job type:
         </label>
+        <br />
         <input
           type='text'
           name='type'
@@ -47,6 +49,7 @@ function EditJob(props) {
         <label htmlFor='company' id='company'>
           Company:
         </label>
+        <br />
         <input
           type='text'
           name='company'
@@ -58,6 +61,7 @@ function EditJob(props) {
         <label htmlFor='company_url' id='company_url'>
           Company website:
         </label>
+        <br />
         <input
           type='text'
           name='company_url'
@@ -69,6 +73,7 @@ function EditJob(props) {
         <label htmlFor='created_at' id='created_at'>
           Date created:
         </label>
+        <br />
         <input
           type='text'
           name='created_at'
@@ -80,6 +85,7 @@ function EditJob(props) {
         <label htmlFor='location' id='location'>
           Company location:
         </label>
+        <br />
         <input
           type='text'
           name='location'
@@ -91,6 +97,7 @@ function EditJob(props) {
         <label htmlFor='description' id='description'>
           Job description:
         </label>
+        <br />
         <textarea
           name='description'
           cols='100'
@@ -102,6 +109,7 @@ function EditJob(props) {
         <label htmlFor='how_to_apply' id='how_to_apply'>
           How to apply:
         </label>
+        <br />
         <input
           type='text'
           name='how_to_apply'
@@ -113,6 +121,7 @@ function EditJob(props) {
         <label htmlFor='company_logo' id='company_logo'>
           Company logo img link:
         </label>
+        <br />
         <input
           type='text'
           name='company_logo'
@@ -121,9 +130,12 @@ function EditJob(props) {
         />
 
         <br />
-        <button type='submit'>Edit job</button>
+        <button type='submit' className='btn btn-success mb-3'>
+          Edit job
+        </button>
+        <br />
+        <Link to={'/user/jobs'}> &#8592; Back to user homepage</Link>
       </form>
-      <Link to={'/user/jobs'}>Back to user homepage</Link>
     </div>
   );
 }

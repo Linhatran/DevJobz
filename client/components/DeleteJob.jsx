@@ -16,13 +16,22 @@ function DeleteJob(props) {
   };
 
   return (
-    <div>
-      <h2>Are you sure about deleting this job posting?</h2>
+    <div className='container' style={{ backgroundColor: '#eef5fa' }}>
+      <h2 className='text-center mt-5'>
+        Are you sure about deleting this job posting?
+      </h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <button type='submit'>Yes, delete it!</button>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='d-flex justify-content-center mt-5'
+      >
+        <button className='btn btn-danger mr-3' type='submit'>
+          Yes, delete it!
+        </button>
+        <button className='btn btn-link btn-outline-primary' type='button'>
+          <Link to={'/user/jobs'}>Back to user homepage</Link>
+        </button>
       </form>
-      <Link to={'/user/jobs'}>Back to user homepage</Link>
     </div>
   );
 }

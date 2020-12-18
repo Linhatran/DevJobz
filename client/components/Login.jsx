@@ -16,18 +16,26 @@ function Login(props) {
   };
 
   return (
-    <div className='container d-flex justify-content-center '>
+    <div
+      className='container d-flex justify-content-center'
+      style={{ backgroundColor: '#eef5fa' }}
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
         id='login-form'
-        className='bg-dark col-md-8 d-flex flex-column align-items-center'
+        className=' col-md-6 d-flex flex-column align-items-center'
+        style={{ backgroundColor: '#386480', borderRadius: '15px' }}
       >
+        <h3 className='text-white mt-5'>
+          <em>Welcome back!</em>
+        </h3>
         <input
           name='username'
           placeholder='Username'
           ref={register({ required: true })}
           type='text'
-          className='col-6 my-4'
+          className='form-control col-7'
+          style={{ marginTop: '40px', marginBottom: '40px' }}
         />
 
         <input
@@ -35,10 +43,15 @@ function Login(props) {
           ref={register({ required: true })}
           type='password'
           placeholder='Password'
-          className='col-6 mb-4'
+          className='form-control col-7'
+          style={{ marginBottom: '40px' }}
         />
         <Link to={'/user/jobs'}>
-          <button type='submit' className=' mb-4'>
+          <button
+            type='submit'
+            className='btn btn-warning mb-4'
+            style={{ marginBottom: '80px' }}
+          >
             Submit
           </button>
         </Link>
