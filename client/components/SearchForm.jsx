@@ -17,7 +17,12 @@ function SearchForm(props) {
   }
 
   return (
-    <form className='d-flex my-2' id='search-form' onSubmit={handleSubmit}>
+    <form
+      className='d-flex my-2'
+      id='search-form'
+      onSubmit={handleSubmit}
+      autoComplete='off'
+    >
       <input
         className='form-control mr-3 col-4'
         type='search'

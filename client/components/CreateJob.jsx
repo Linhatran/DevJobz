@@ -3,14 +3,13 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-//https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Express_Clothing_Logo.SVG/1200px-Express_Clothing_Logo.SVG.png
 function CreateJob() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     axios
       .post('/api/post', data)
       .then((result) => {
-        console.log(result.data);
+        console.log('posted job');
       })
       .catch((err) => console.log(err));
   };
@@ -22,6 +21,7 @@ function CreateJob() {
         onSubmit={handleSubmit(onSubmit)}
         id='create-job-form'
         className='pl-5'
+        autoComplete='off'
       >
         <label htmlFor='title' id='title'>
           Title:

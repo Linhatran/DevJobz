@@ -21,7 +21,12 @@ function EditJob(props) {
     <div className='container'>
       <h2 className='text-center pt-5'>Edit Job Posting</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className='pl-5' id='edit-form'>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='pl-5'
+        id='edit-form'
+        autoComplete='off'
+      >
         <label htmlFor='title' id='title'>
           Title:
         </label>

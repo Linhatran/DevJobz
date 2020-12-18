@@ -23,6 +23,7 @@ function Login(props) {
       <form
         onSubmit={handleSubmit(onSubmit)}
         id='login-form'
+        autoComplete='off'
         className=' col-md-6 d-flex flex-column align-items-center'
         style={{ backgroundColor: '#386480', borderRadius: '15px' }}
       >
